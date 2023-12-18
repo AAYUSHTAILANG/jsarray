@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Operations Guide</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+            background-color: #f5f5dc; /* Beige background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+    .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #f5f5dc; /* White container background */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+
+    code {
+      background-color: #f5f5dc;
+      padding: 2px 4px;
+      border-radius: 4px;
+      display: block;
+      white-space: pre-wrap;
+      color: black;
+    }
+
+    h2 {
+      margin-top: 20px;
+      color: blue;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+
+    <h2>Arrays Introduction</h2>
+    <p>Arrays in JavaScript can hold different values and offer various operations for modification and access.</p>
+
+    <h2>Modifying Values and Accessing</h2>
+    <code>
+      arr = [11, 22.5, "33", false];
+      arr.length = 4;
+
+      arr[6] = 44;
+      arr = [11, 22.5, "33", false, , , 44];
+      document.write(arr[4] + " " + arr[5]);
+      =>undefined undefined
+    </code>
+
+    <h2>Iteration Through the Array</h2>
+    <code>
+        1.for loop
+        =>shows undefined values
+            arr=[11,22.5,"33",false, , ,44]
+            document.write(arr)
+            =>11,22.5,"33",false,undefined ,undefined ,44
+        
+        2.for(i in arr)
+        =>skips undefined values
+            arr=[11,22.5,"33",false, , ,44]
+            document.write(arr)
+            =>11,22.5,"33",false,44
+        
+        3.for(element of arr)
+        =>values present at actual element.
+    </code>
+
+    <h2>Array Functionality</h2>
+    <code>
+        1.length
+        2.converting arr to string
+        
+        (arr.toString)=>11,22.5,"33",false,44
+        arr.join("*")=>11*22.5*"33"*false*44
+    </code>
+
+    <h2>Adding and Removing Elements from Array</h2>
+    <code>
+        a.from beginning
+        i.  arr.shift()=>removes first element
+        ii. arr.unshift(10)=>adding 10 0th index
+    *shift takes element out from the beginning, and unshift adds to the front.
+    *others gets shifted.
+    
+    b.from end
+        i.   arr.pop()=>removes the last element
+        ii.  arr.push(10)=>adds at last
+    
+    c.from any position
+    
+        arr.slice(starting_index,no.of_elements_to_be_deleted,Element_to_be_inserted)
+    
+    takes 3 arguments out of which only 2 are mandatory
+    
+    let arr=[11,22,33,44,55]
+    
+      i.insertion only
+    
+        arr.slice(starting_index,0,Elements_to_be_inserted)
+    
+        arr.splice(2,0,10)
+        arr=[11,22,10,33,44,55]
+    
+        *for entering more than 1 element
+        arr.splice(1,0,9,8,7)
+        arr=[11,9,8,7,22,10,33,44,55]
+    
+      ii.only deletion
+        arr.splice(starting_index,no.of_elements_to_be_deleted)
+    
+        arr.splice(4,2)
+        arr=[11,9,8,7,33,44,55]
+    
+      iii.both
+        arr.splice(2,1,50,60,70)
+        arr=[11,9,50,60,70,7,33,44,55]
+    </code>
+
+    <h2>Taking a Part of Array</h2>
+    <code>
+        arr.slice(start_index,end_index)
+        *end index is excluded
+        *returns new array
+        *if end_index not mentioned then goes upto the last element.
+        
+                    arr=[0,1,2,3,4,5,6]
+            var slice = arr.slice(2,6)
+            slice=[2,3,4,5]
+        
+        NOTE:
+        ----
+        *Imagine your array is a deck of cards. splice is like rearranging the cards, either adding new ones or removing some, changing the original deck. On the other hand, slice is like taking a portion of the deck to create a new one, leaving the original deck unchanged. So, if you want to shuffle things up, use splice; if you want to make a copy, use slice.
+        
+        *"Sam decided to splice his collection of stickers, adding a cool one in the middle. Meanwhile, Emma chose to slice a piece of cake without changing the whole dessert, so she could enjoy it later."
+    </code>
+
+    <h2>Concatenation of Arrays</h2>
+    <code>
+        var con_arr=arr1.concat(arr2)
+        => arr1+arr2
+        var con_arr=arr1.concat(arr2,arr3)
+        =>arr1+arr2+arr3
+    </code>
+
+    <h2>Searching Element in Array</h2>
+    <code>
+        arr.indexOf(element)=>returns first occurence
+        arr.lastIndexOf(element)=>return last occurence
+        if not found return -1.
+    </code>
+
+    <h2>Sorting the Array</h2>
+    <code>
+        arr.sort()
+        *sorts on the basics of NATURAL ORDERING 
+        ie ASCII value of FIRST DIGIT
+        
+        ex:- arr=[50,20,10,100,1000]
+        arr.sort()=>[10,100,1000,20,50]
+    </code>
+  </div>
+
+  <!-- Bootstrap JS and jQuery (required for Bootstrap) -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
